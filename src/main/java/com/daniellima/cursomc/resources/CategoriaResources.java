@@ -15,14 +15,14 @@ import com.daniellima.cursomc.services.CategoriaService;
 @RestController
 @RequestMapping(value = "categorias")
 public class CategoriaResources {
-	
+
 	@Autowired
 	private CategoriaService service;
 
-	@RequestMapping(value = "/{id}", method=RequestMethod.GET) 
-	public ResponseEntity<?> findOne(@PathVariable Integer id) { 
+	@RequestMapping(value = "/{id}", method=RequestMethod.GET)
+	public ResponseEntity<?> findOne(@PathVariable Integer id) {
 		Categoria obj = service.find(id);
-	
+
 	 return ResponseEntity.ok().body(obj);
 	}
 }
