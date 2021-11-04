@@ -1,7 +1,5 @@
 package com.daniellima.cursomc.resources;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,10 +17,10 @@ public class CategoriaResources {
 	@Autowired
 	private CategoriaService service;
 
-	@RequestMapping(value = "/{id}", method=RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> findOne(@PathVariable Integer id) {
 		Categoria obj = service.find(id);
 
-	 return ResponseEntity.ok().body(obj);
+		return ResponseEntity.ok().body(obj);
 	}
 }
