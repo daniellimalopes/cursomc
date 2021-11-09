@@ -18,10 +18,9 @@ import javax.persistence.OneToMany;
 import com.daniellima.cursomc.domain.enums.TipoCliente;
 
 @Entity
-public class Cliente  implements Serializable {
+public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -29,99 +28,108 @@ public class Cliente  implements Serializable {
 	private String email;
 	private String cpfOucnpj;
 	private Integer tipo;
-	
-	
-@OneToMany(mappedBy="cliente")	
-private List<Endereco> enderecos = new ArrayList<>();
 
-@ElementCollection
-@CollectionTable(name="Telefone")
-private Set<String> telefones = new HashSet<>();
+	@OneToMany(mappedBy = "cliente")
+	private List<Endereco> enderecos = new ArrayList<>();
 
-public Cliente() {
+	@ElementCollection
+	@CollectionTable(name = "Telefone")
+	private Set<String> telefones = new HashSet<>();
+
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedido = new ArrayList<>();
+
+	public Cliente() {
 	}
 
-public Cliente(Integer id, String nome, String email, String cpfOucnpj, TipoCliente tipo) {
-	super();
-	this.id = id;
-	this.nome = nome;
-	this.email = email;
-	this.cpfOucnpj = cpfOucnpj;
-	this.tipo = tipo.getCod();
-}
+	public Cliente(Integer id, String nome, String email, String cpfOucnpj, TipoCliente tipo) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.cpfOucnpj = cpfOucnpj;
+		this.tipo = tipo.getCod();
+	}
 
-public Integer getId() {
-	return id;
-}
+	public Integer getId() {
+		return id;
+	}
 
-public void setId(Integer id) {
-	this.id = id;
-}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-public String getNome() {
-	return nome;
-}
+	public String getNome() {
+		return nome;
+	}
 
-public void setNome(String nome) {
-	this.nome = nome;
-}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-public String getEmail() {
-	return email;
-}
+	public String getEmail() {
+		return email;
+	}
 
-public void setEmail(String email) {
-	this.email = email;
-}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-public String getCpfOucnpj() {
-	return cpfOucnpj;
-}
+	public String getCpfOucnpj() {
+		return cpfOucnpj;
+	}
 
-public void setCpfOucnpj(String cpfOucnpj) {
-	this.cpfOucnpj = cpfOucnpj;
-}
+	public void setCpfOucnpj(String cpfOucnpj) {
+		this.cpfOucnpj = cpfOucnpj;
+	}
 
-public TipoCliente getTipo() {
-	return TipoCliente.toEnum(tipo);
-}
+	public TipoCliente getTipo() {
+		return TipoCliente.toEnum(tipo);
+	}
 
-public void setTipo(TipoCliente tipo) {
-	this.tipo = tipo.getCod();
-}
+	public void setTipo(TipoCliente tipo) {
+		this.tipo = tipo.getCod();
+	}
 
-public List<Endereco> getEnderecos() {
-	return enderecos;
-}
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
 
-public void setEnderecos(List<Endereco> enderecos) {
-	this.enderecos = enderecos;
-}
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
 
-public Set<String> getTelefones() {
-	return telefones;
-}
+	public Set<String> getTelefones() {
+		return telefones;
+	}
 
-public void setTelefones(Set<String> telefones) {
-	this.telefones = telefones;
-}
+	public void setTelefones(Set<String> telefones) {
+		this.telefones = telefones;
+	}
 
-@Override
-public int hashCode() {
-	return Objects.hash(id);
-}
+	public List<Pedido> getPedido() {
+		return pedido;
+	}
 
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	Cliente other = (Cliente) obj;
-	return Objects.equals(id, other.id);
-}
+	public void setPedido(List<Pedido> pedido) {
+		this.pedido = pedido;
+	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		return Objects.equals(id, other.id);
+	}
 
 }
