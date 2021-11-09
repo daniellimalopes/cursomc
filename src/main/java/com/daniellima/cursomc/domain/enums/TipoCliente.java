@@ -31,15 +31,13 @@ public enum TipoCliente {
 		}
 		// O cod
 		for (TipoCliente x : TipoCliente.values()) {
-			if (cod.equals(x.getcod())) {
+			if (cod.equals(x.getCod())) {
 				return x;
 			}
 		}
 		throw new IllegalArgumentException("id Inválido" + cod);
 	}
 
-	Object getcod() {
-
-		return null;
+	
 	}
-}
+

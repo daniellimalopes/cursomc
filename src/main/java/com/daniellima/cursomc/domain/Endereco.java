@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Endereco implements Serializable {
 
@@ -24,6 +26,7 @@ public class Endereco implements Serializable {
 	private String bairro;
 	private String cep;
 
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
@@ -33,6 +36,7 @@ public class Endereco implements Serializable {
 	private Cidade cidade;
 
 	public Endereco() {
+		super();
 
 	}
 
@@ -112,7 +116,7 @@ public class Endereco implements Serializable {
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -129,7 +133,5 @@ public class Endereco implements Serializable {
 		Endereco other = (Endereco) obj;
 		return Objects.equals(id, other.id);
 	}
-
-	
 
 }
